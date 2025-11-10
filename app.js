@@ -1,19 +1,21 @@
-const express = require("express");
+import express from 'express';
 const app = express();
-const hostname = "127.0.0.1";
+const hostname = 'localhost';
 const port = 3000;
 
-// Define a route for GET requests to the root URL
-// app.get("/", (req, res) => {
-//   res.send("Hello World from Express!");
-// });
-
-app.get("/api/test", (request, response) => {
-  const responseData = { vastaus: "toimii" };
+app.get('/api/v1/cat', (request, response) => {
+  const responseData = {
+    cat_id: 1,
+    name: 'Garfield',
+    birthdate: '2.10.2012',
+    weight: 8,
+    owner: 'John',
+    image: 'https://loremflickr.com/320/240/cat',
+  };
   response.json(responseData);
 });
 
-app.use(express.static("public"));
+app.use('/public', express.static('public'));
 
 // Start the server
 app.listen(port, hostname, () => {
