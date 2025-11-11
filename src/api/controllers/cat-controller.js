@@ -18,6 +18,9 @@ const postCat = (req, res) => {
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});
+
+    console.log(req.body);
+    console.log(req.file);
   } else {
     res.sendStatus(400);
   }
